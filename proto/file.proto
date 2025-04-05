@@ -5,9 +5,9 @@ package file;
 option go_package = "file.v1;pb";
 
 service FileService{
-  rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
+  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse);
   rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
-  rpc DownloadFiles(DownloadFilesRequest) returns (DownloadFilesResponse);
+  rpc DownloadFiles(DownloadFilesRequest) returns (stream DownloadFilesResponse);
 }
 
 message UploadFileRequest{
@@ -36,5 +36,5 @@ message DownloadFilesRequest{
 }
 
 message DownloadFilesResponse{
-  string message = 1;
+  bytes message = 1;
 }
